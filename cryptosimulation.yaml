@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-sim
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crypto-sim
+  template:
+    metadata:
+      labels:
+        app: crypto-sim
+    spec:
+      containers:
+      - name: sim
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args: ["while true; do wget -q -O- http://xmr.pool.minergate.com > /dev/null; sleep 60; done"]
