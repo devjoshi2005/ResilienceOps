@@ -6,7 +6,7 @@ import pandas as pd
 
 # Setup
 LLM_MODEL = "gpt-4o"
-llm = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+llm = OpenAI(api_key=os.getenv("OPENAI API KEY"))
 
 DESTINATIONFILE=f"/tmp/anomalies-list/anomalies-{f"{str(int(datetime.now().day))}{str(datetime.now().month)}{str(datetime.now().year)}"}.json"
 OUTPUT_TF_FILE = f"/tmp/results/remediation-{f"{str(int(datetime.now().day))}{str(datetime.now().month)}{str(datetime.now().year)}"}.tf"
