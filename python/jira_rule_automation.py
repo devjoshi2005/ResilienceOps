@@ -5,10 +5,10 @@ from jira import JIRA
 import pandas as pd
 
 # Jira config
-JIRA_BASE_URL = "https://resilienceops-demo.atlassian.net/"
+JIRA_BASE_URL = os.getenv("JIRA_BASE_URL") # Eg: "https://<projectname>.atlassian.net/"
 JIRA_PROJECT_KEY = "SEC"  # your project key
 JIRA_ISSUE_TYPE = "10001"   # ID for issue type
-JIRA_EMAIL = "devvjoshi2005@gmail.com"
+JIRA_EMAIL = os.getenv("MAIL_URL") #personal/business mail used for jira account signup/login
 JIRA_API_TOKEN = os.getenv("JIRA_TOKEN")  
 
 AUTH = (JIRA_EMAIL, JIRA_API_TOKEN)
