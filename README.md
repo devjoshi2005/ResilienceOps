@@ -16,6 +16,10 @@ Imagine your company's cloud infrastructure is like a large building with many r
 - During this time, attackers move laterally, steal data, deploy ransomware
 - Manual incident response costs **$4.88M per breach** on average
 
+Technical Report : [Technical Report](https://github.com/devjoshi2005/ResilienceOps/blob/main/technicalreport.md)
+Business Report : [Business Report](https://github.com/devjoshi2005/ResilienceOps/blob/main/businessreport.md)
+
+
 ---
 <img width="1311" height="645" alt="Image" src="https://github.com/user-attachments/assets/29b056ff-c89d-45d7-965a-43ad21d4510d" />
 
