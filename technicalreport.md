@@ -98,6 +98,44 @@ flowchart TD
     class GF viz
 ```
 
+### Technical Implementation
+
+**1) Prometheus & Grafana Setup** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/095f9291-3d6c-44b1-837a-90686630a62a)  
+- [Video 2](https://github.com/user-attachments/assets/4428c339-5144-4337-8ebe-40eab30ec295)  
+- [Video 3](https://github.com/user-attachments/assets/deeec821-cd0f-4d9b-ad16-565e0bdc9f6f)  
+- [Video 4](https://github.com/user-attachments/assets/4bfd618e-dbf9-4e14-962b-9cace97f1ea2)  
+- [Video 5](https://github.com/user-attachments/assets/2e6e42d8-810f-49e2-b556-0c65858dd5c6)
+
+**2) EKS & Guardduty** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/e2b4c861-f4bc-44e4-ad08-cf0765506e2d)  
+
+**3) SQLite Data Aggregration & Normalization** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/d6f7ccf6-eb2d-4ba7-b2fd-d8a5c960e73c)  
+
+**4) Python Anomaly Detector** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/19759992-cdfa-4a28-91ff-c4976e913ecd)  
+
+**5) Jira & OpenAI for Incident Response** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/3c6335bb-0c6b-464b-abfa-877c274c747e)
+- [Video 2](https://github.com/user-attachments/assets/b90c5172-5852-408b-a144-727f1d3efc32)  
+
+**6) Neo4j & Grafana Visualization** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
+
+
 ---
 
 ## COMPONENT DEEP-DIVE
