@@ -100,7 +100,8 @@ flowchart TD
 
 ### Technical Implementation
 
-**1) Prometheus & Grafana Setup** - 
+**1) Prometheus & Grafana Setup** - An EC2 instance (t3.medium, Amazon Linux 2 AMI) was provisioned to host the observability stack. Security group rules allowed inbound traffic on ports 22 (SSH), 9090 (Prometheus), 3000 (Grafana), and 9100 (Node Exporter) from 0.0.0.0/0, with unrestricted outbound access. Docker Compose deployed the following services: Prometheus (v3.9.1), Grafana (v12.3.3), and Node Exporter (v1.10.2), exposing them locally via http://<instance-ip>:9090 and http://<instance-ip>:3000.
+An IAM role (CloudWatchExporterRole) with a custom policy (CloudWatchExporterPolicy) was attached to the instance, granting necessary CloudWatch read permissions. Prometheus configuration was updated to scrape CloudWatch metrics via the CloudWatch Exporter (v0.16.0), enabling AWS resource monitoring (EC2 CPU, S3 objects, Billing EstimatedCharges) to be visualized in Grafana dashboards.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/095f9291-3d6c-44b1-837a-90686630a62a)  
@@ -109,7 +110,7 @@ flowchart TD
 - [Video 4](https://github.com/user-attachments/assets/4bfd618e-dbf9-4e14-962b-9cace97f1ea2)  
 - [Video 5](https://github.com/user-attachments/assets/2e6e42d8-810f-49e2-b556-0c65858dd5c6)
 
-**2) EKS & Guardduty** - 
+**2) EKS & Guardduty** - A sample EKS cluster was configured `reslilienceops`
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/e2b4c861-f4bc-44e4-ad08-cf0765506e2d)  
@@ -131,6 +132,12 @@ flowchart TD
 - [Video 2](https://github.com/user-attachments/assets/b90c5172-5852-408b-a144-727f1d3efc32)  
 
 **6) Neo4j & Grafana Visualization** - 
+
+**Video Walkthroughs**  
+- [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
+
+
+**9) IAM Policy** -An IAM user named `Admin_Manager` was created to manage all resources for the ResilienceOps project. A custom IAM policy named `iam_policy` was attached to this user, enforcing the principle of least privilege by granting only the minimum permissions required for provisioning, monitoring, scanning, and operating the multi-cloud infrastructure and associated security tools.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
