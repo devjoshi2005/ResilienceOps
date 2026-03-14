@@ -140,7 +140,7 @@ An IAM role (CloudWatchExporterRole) with a custom policy (CloudWatchExporterPol
 **9) IAM Policy** -An IAM user named `Admin_Manager` was created to manage all resources for the ResilienceOps project. A custom IAM policy named `iam_policy` was attached to this user, enforcing the principle of least privilege by granting only the minimum permissions required for provisioning, monitoring, scanning, and operating the multi-cloud infrastructure and associated security tools.
 
 **Video Walkthroughs**  
-- [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
+- [Video 1](https://github.com/user-attachments/assets/25aa73a5-9b32-4704-8eb2-bbca2394f102)  
 
 
 ---
