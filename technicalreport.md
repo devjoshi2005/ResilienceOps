@@ -110,12 +110,37 @@ An IAM role (CloudWatchExporterRole) with a custom policy (CloudWatchExporterPol
 - [Video 4](https://github.com/user-attachments/assets/4bfd618e-dbf9-4e14-962b-9cace97f1ea2)  
 - [Video 5](https://github.com/user-attachments/assets/2e6e42d8-810f-49e2-b556-0c65858dd5c6)
 
-**2) EKS & Guardduty** - A sample EKS cluster was configured `reslilienceops`
+**2) EKS & Guardduty** - A sample EKS cluster `resilienceops` and guardudty was configured (using iam identity mapping of `AdminManager`) with follow commands 
+```
+eksctl create cluster \
+  --name resilienceops \
+  --region ap-south-1 \
+  --node-type t3.medium \
+  --nodes 2 \
+  --nodes-min 1 \
+  --nodes-max 3 \
+  --managed
+kubectl config use-context resilienceops-ap-south-1
+kubectl get nodes
+aws guardduty create-detector --enable
+
+DETECTOR_ID=$(aws guardduty list-detectors --query 'DetectorIds[0]' --output text)
+echo "Detector ID: $DETECTOR_ID"
+
+aws guardduty create-publishing-destination \
+  --detector-id "$DETECTOR_ID" \
+  --destination-type S3 \
+  --destination-properties BucketName=soc-demo-cloudtrail-xxx,Prefix=guardduty-findings/
+
+aws guardduty get-findings-statistics --detector-id "$DETECTOR_ID"
+```
+
+then a yaml file of DWVA (Damn web vulnerable app) was configured (which contains all XSS,SQL,CSRF based vulnerabilties) with cryptomining based yml and deployed it to our cluster for running.Later aws s3 guardduty bucket with KMS key of same region with mutual permissions for read/write was configured so that guardduty detects runtime vulnerabilties of eks cluster and store it in appropriate s3 bucket in encrypted form.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/e2b4c861-f4bc-44e4-ad08-cf0765506e2d)  
 
-**3) SQLite Data Aggregration & Normalization** - 
+**3) SQLite Data Aggregration & Normalization** - Daily Security Logs were extracted from Guardduty and Cloudtrail's respective s3 buckets are extracted from their jsonl.gz format with the help of python. Formulated severity calculation by (critical_events : PutBUcketAcl , AuthorizeSecurityGroupIngress , AssumeRole  , CreateAccessKey , high_events : PutUserPolicy , AttachUserPolicy , CreateUser) , normalized data into columns of (timestamp,source,severity,event type,description,resource arn, account id , region , raw json findings) and stored it in sqlite database in unencrypted format.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/d6f7ccf6-eb2d-4ba7-b2fd-d8a5c960e73c)  
@@ -137,7 +162,7 @@ An IAM role (CloudWatchExporterRole) with a custom policy (CloudWatchExporterPol
 - [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
 
 
-**9) IAM Policy** -An IAM user named `Admin_Manager` was created to manage all resources for the ResilienceOps project. A custom IAM policy named `iam_policy` was attached to this user, enforcing the principle of least privilege by granting only the minimum permissions required for provisioning, monitoring, scanning, and operating the multi-cloud infrastructure and associated security tools.
+**7) IAM Policy** -An IAM user named `Admin_Manager` was created to manage all resources for the ResilienceOps project. A custom IAM policy named `iam_policy` was attached to this user, enforcing the principle of least privilege by granting only the minimum permissions required for provisioning, monitoring, scanning, and operating the multi-cloud infrastructure and associated security tools.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/25aa73a5-9b32-4704-8eb2-bbca2394f102)  
