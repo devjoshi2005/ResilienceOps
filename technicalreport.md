@@ -145,18 +145,18 @@ then a yaml file of DWVA (Damn web vulnerable app) was configured (which contain
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/d6f7ccf6-eb2d-4ba7-b2fd-d8a5c960e73c)  
 
-**4) Python Anomaly Detector** - 
+**4) Python Anomaly Detector** - implements real-time unsupervised anomaly detection for security events in the ResilienceOps platform. It pulls the last 24 hours (or 1 hour for critical checks) of events from a daily SQLite database (resilienceops-YYYYMMDD.db), engineers temporal and behavioral features (hour, day-of-week, severity score, event rarity, resource scope, and multi-source activity), and applies an Isolation Forest model to identify anomalies. A composite risk score (0–100) is calculated, and incidents exceeding the threshold are exported as structured JSON (/tmp/anomalies-list/anomalies-YYYYMMDD.json) for immediate SOC alerting and forensic review. Designed for high-velocity cloud-native security monitoring.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/19759992-cdfa-4a28-91ff-c4976e913ecd)  
 
-**5) Jira & OpenAI for Incident Response** - 
+**5) Jira & OpenAI for Incident Response** - The Jira & OpenAI for Incident Response module automates end-to-end security remediation in ResilienceOps. When an incident is detected, terraform_generation.py uses OpenAI to instantly generate compliant Terraform code for remediation. This generated IaC is automatically scanned against the custom OPA Rego policy (policy_check.rego) using Trivy to enforce security and compliance rules. Once validated, jira_rule_automation.py creates a structured Jira ticket with the remediation plan, enabling fully automated, policy-driven incident response.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/3c6335bb-0c6b-464b-abfa-877c274c747e)
 - [Video 2](https://github.com/user-attachments/assets/b90c5172-5852-408b-a144-727f1d3efc32)  
 
-**6) Neo4j & Grafana Visualization** - 
+**6) Neo4j & Grafana Visualization** - Via python program,Neo4j local docker instance is provisioned which helped building a real-time security event knowledge graph in by extracting critical and high-anomaly events from the daily SQLite database (resilienceops-YYYYMMDD.db), then creates Principal, Resource, and Event nodes connected via PERFORMS and AFFECTS relationships using idempotent Cypher MERGE statements. This graph enables advanced attack-path analysis and correlation within the ResilienceOps platform. Complementing the graph backend, a Grafana dashboard is later configured that provides live operational visibility with key metrics including projected monthly bill, API call count, and monthly MB usage for cost optimization and resource monitoring.
 
 **Video Walkthroughs**  
 - [Video 1](https://github.com/user-attachments/assets/383c5f72-a54e-457f-932b-08d836f73dfc)  
